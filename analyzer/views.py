@@ -28,11 +28,11 @@ import tensorflow as tf
 
 # Keras stuff
 
-# global graph
+global graph
 
-# graph = tf.compat.v1.get_default_graph()
+graph = tf.compat.v1.get_default_graph()
 
-# model = load_model("Sentiment_LSTM_model.h5")
+model = load_model('./models/Sentiment_LSTM_model.h5')
 MAX_SEQUENCE_LENGTH = 300
 
 # Twitter
@@ -67,7 +67,7 @@ def predict(text, include_neutral=True):
     # Predict
     # with model_graph.as_default():
     #     with tf_session.as_default():
-    model= load_model('./models/Sentiment_LSTM_model.h5')
+    # model= load_model('./models/Sentiment_LSTM_model.h5')
     score = model.predict([x_test])[0]
     if score >= 0.4 and score <= 0.6:
         label = "Neutral"
