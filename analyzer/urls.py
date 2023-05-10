@@ -4,8 +4,8 @@ from . import views
   
 urlpatterns = [
    path('', views.index, name ='index'),
-   path('gettweets/<str:text>', views.gettweets),
-   path('analyzehashtag/<str:text>', views.analyzehashtag),
-   path('getsentiment/<str:text>', views.getsentiment),
-   # path('getsentiment/<str:text>', views.getsentiment),
+   path('gettweets/', views.gettweets),
+   path('analyzehashtag/', views.analyzehashtag),
+   path('getsentiment/', views.getsentiment),
+   # path('getsentiment/', views.getsentiment),
 ]
