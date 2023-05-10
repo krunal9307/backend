@@ -89,7 +89,7 @@ def index(request):
 # @app.route("/getsentiment", methods=["GET"])
 
 @api_view(('GET',))
-def getsentiment(request, text):
+def getsentiment(request):
     data = {"success": False}
     # if parameters are found, echo the msg parameter
     if text != None:
@@ -105,11 +105,12 @@ def getsentiment(request, text):
 # @app.route("/analyzehashtag", methods=["GET"])
 
 @api_view(('GET',))
-def analyzehashtag(request, text):
+def analyzehashtag(request):
 
     positive = 0
     neutral = 0
     negative = 0
+    text = request.query_params.get('text', None)
     tweets = client.search_recent_tweets(query = f"(#{text}) lang:en", max_results = 100)
     # tweets = client.search_recent_tweets(query = text, max_results = 100)
     for tweet in tweets.data:
@@ -128,9 +129,9 @@ def analyzehashtag(request, text):
 
 
 @api_view(('GET',))
-def gettweets(request, text):
+def gettweets(request):
     tweets = []
-    query = text
+    query = request.query_params.get('text', None)
     tweetvalue = client.search_recent_tweets(query = f"(#{query}) lang:en", max_results = 10)
     # tweetvalue = client.search_recent_tweets(query = query, max_results = 10)
     for tweet in tweetvalue.data:
