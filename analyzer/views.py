@@ -111,7 +111,7 @@ def analyzehashtag(request):
     neutral = 0
     negative = 0
     text = request.query_params.get('text', None)
-    tweets = client.search_recent_tweets(query = f"(#{text}) lang:en", max_results = 100)
+    tweets = client.search_recent_tweets(query = f"(#{text}) lang:en", max_results = 50)
     # tweets = client.search_recent_tweets(query = text, max_results = 100)
     for tweet in tweets.data:
         # with graph.as_default():
